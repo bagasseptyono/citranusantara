@@ -131,6 +131,26 @@ p {
     font-size: 16px;
 }
 
+a {
+    text-decoration: none;
+    color: #fff;
+    transition: font-size 0.3s;
+}
+
+a:hover {
+    font-size: 1.125rem;
+}
+
+.a-link {
+    display: flex;
+    width: 120px;
+    height: 32px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: #4B8673;
+}
+
 /* header */
 header {
     width: 100%;
@@ -178,10 +198,12 @@ nav .nav-list ul {
 .header-slider {
     height: 100vh;
 }
+
 .swiper {
     width: 100%;
     height: 100%;
 }
+
 .swiper-slide {
     text-align: center;
     font-size: 18px;
@@ -190,6 +212,7 @@ nav .nav-list ul {
     justify-content: center;
     align-items: center;
 }
+
 .swiper-slide img {
     display: block;
     width: 100%;
@@ -202,19 +225,19 @@ nav .nav-list ul {
     /* display: block;
     position: relative; */
     overflow: hidden;
-  }
-  
-  
-  .gallery a img {
+}
+
+
+.gallery a img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 0.3s;
-  }
-  
-  .gallery a:hover img {
+}
+
+.gallery a:hover img {
     transform: scale(1.05);
-  }
+}
 
 /* header container */
 .header-container {
@@ -237,7 +260,8 @@ nav .nav-list ul {
     font-weight: 700;
     line-height: 120%;
 }
-.header-container form{
+
+.header-container form {
     display: flex;
     justify-content: space-around;
     width: 350px;
@@ -245,22 +269,51 @@ nav .nav-list ul {
     background: #FFF;
     font-size: 20px;
 }
-.header-container form input{
+
+.header-container form input {
     height: 50px;
     width: 80%;
     border: none;
     font-size: 20px;
     border-radius: 15px;
 }
-.header-container form input:focus{
+
+.header-container form input:focus {
     border: none;
     outline: none;
 }
-.header-container form button{
+
+.header-container form button {
     border: none;
     margin: 0;
     padding: 0;
     background: transparent;
     font-size: 20px;
-    
+
+}
+
+/* main */
+
+
+.kategori .row .col a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    width: 100%;
+    border-radius: 10px;
+    background: #007F6D;
+}
+
+.rekomendasi .daftarRekomendasi .card {
+    width: 260px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.rekomendasi .daftarRekomendasi .card p{
+    font-size: small;
+}
+
+.rekomendasi .more{
+    background-color: #1A2F28;
 }
