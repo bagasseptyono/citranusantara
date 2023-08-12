@@ -309,11 +309,61 @@ nav .nav-list ul {
     width: 260px;
     margin-left: auto;
     margin-right: auto;
+    box-shadow: 4px 4px 15px 0px rgba(0, 0, 0, 0.20);
 }
-.rekomendasi .daftarRekomendasi .card p{
+
+.rekomendasi .daftarRekomendasi .card p {
     font-size: small;
 }
 
-.rekomendasi .more{
+.rekomendasi .more {
     background-color: #1A2F28;
+}
+
+.search-form input,
+.select-form select,
+.submit-form button {
+    font-size: 14px;
+}
+
+/* provinsi */
+.list-provinsi{
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.provinsi {
+    width: 180px;
+    height: 180px;
+    position: relative;
+   
+
+}
+
+.provinsi a {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    font-size: larger;
+    font-weight: 700;
+    transition: font-size 0.3s ease-in-out;
+}
+
+.provinsi a:hover{
+    font-size: 20px;
+}
+
+.provinsi img {
+    width: 100%;
+    height: 100%;
+    filter: brightness(70%);
+    object-fit: cover;
 }
