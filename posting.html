@@ -23,7 +23,7 @@
             text-align: center;
             width: 80%;
             height: 100%;
-            margin-top: 220px;
+           
         }
         
         .container .tagline {
@@ -31,7 +31,7 @@
             font-weight: bold;
             color: black;
             text-align: left;
-            margin-left: 15px;
+            margin-left: 10%;
         }
         
         .container .subtagline {
@@ -54,6 +54,7 @@
         .form-left {
             width: 200px;
             height: 200px;
+            margin-left: 10%;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -77,7 +78,7 @@
         
         .form-right p,
         .form-right {
-            width: 490px;
+            
             margin-left: 40px;
             text-align: left;
             color: #9C9C9C;
@@ -106,7 +107,27 @@
             color: white;
             border-radius: 5px;
             cursor: pointer;
+            margin-left: 40px;
         }
+
+        .upload-label {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .upload-label:hover {
+            background-color: #0056b3;
+        }
+        
+        .form-left input[type="file"] {
+            display: none;
+        }   
+        
     </style>
     
 </head>
@@ -139,49 +160,74 @@
             </div>
         </div>
         <div class="header-container">
-            <div class="container">
-                <div class="tagline">
-                    Posting Wisata
-                </div>
-                <div class="subtagline">
-                    <h1></h1>
-                </div>
-                <form action="" method="post" enctype="multipart/form-data">
-                    <div class="form-left">
-                        <label for="imageUpload">Unggah Foto</label>
-                        <input type="file" id="imageUpload" name="imageUpload">
-                    </div>
-                    <div class="form-right">
-                        <label for="judul">Judul</label>
-                        <p>Masukkan Judul Wisata Yang ingin di Posting</p>
-                        <input type="text" id="judul" name="judul" required>
-        
-                        <label for="deskripsi">Deskripsi</label>
-                        <p>Masukkan deskripsi singkat tentang wisata atau budaya yang ada di tempat tersebut</p>
-                        <textarea id="deskripsi" name="deskripsi" rows="4" required></textarea>
-                        
-                        <label for="lokasi">Lokasi</label>
-                        <p>Masukkan lokasi untuk mengunjungi tempat tersebut</p>
-                        <input type="text" id="lokasi" name="lokasi" required>
-
-                        <label for="tarif">Tarif</label>
-                        <P>Masukkan tarif masuk untuk mengunjungi tempat tersebut</P>
-                        <input type="text" id="tarif" name="tarif" required>
-                        
-                        <label for="kategori">Kategori</label>
-                        <p>Masukkan kategori dan lokasi tempat tersebut agar dapat mempermudah orang lain untuk menemukan tempatnya</p>
-                        <input type="text" id="kategori" name="kategori" required>
-                        
-                        <button type="submit">Posting</button>
-                    </div>
-                </form>
+            <div class="tagline">
+                POSTING WISATA
             </div>
         </div>
         
     </header>
+    <div class="container">
+        <div class="tagline">
+            Posting Wisata
+        </div>
+        <div class="subtagline">
+            <h1></h1>
+        </div>
+        <form action="" method="post" enctype="multipart/form-data">
+           
+            <div class="form-left">
+                <label for="imageUpload" class="upload-label">
+                    <i class="fas fa-camera"></i> Unggah Foto
+                </label>
+                <input type="file" id="imageUpload" name="imageUpload">
+                <div id="imagePreview"></div>
+            </div>
+            
+            <div class="form-right">
+                <label for="judul">Judul</label>
+                <p>Masukkan Judul Wisata Yang ingin di Posting</p>
+                <input type="text" id="judul" name="judul" required>
 
+                <label for="deskripsi">Deskripsi</label>
+                <p>Masukkan deskripsi singkat tentang wisata atau budaya yang ada di tempat tersebut</p>
+                <textarea id="deskripsi" name="deskripsi" rows="4" required></textarea>
+                
+                <label for="lokasi">Lokasi</label>
+                <p>Masukkan lokasi untuk mengunjungi tempat tersebut</p>
+                <input type="text" id="lokasi" name="lokasi" required>
+
+                <label for="tarif">Tarif</label>
+                <P>Masukkan tarif masuk untuk mengunjungi tempat tersebut</P>
+                <input type="text" id="tarif" name="tarif" required>
+                
+                <label for="kategori">Kategori</label>
+                <p>Masukkan kategori dan lokasi tempat tersebut agar dapat mempermudah orang lain untuk menemukan tempatnya</p>
+                <input type="text" id="kategori" name="kategori" required>
+                
+                <button type="submit">Posting</button>
+            </div>
+        </form>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <script src="script.js"></script>
+    
+        <script>
+            document.getElementById('imageUpload').addEventListener('change', function (event) {
+                const fileInput = event.target;
+                const imagePreview = document.getElementById('imagePreview');
+                
+                if (fileInput.files && fileInput.files[0]) {
+                    const reader = new FileReader();
+                    
+                    reader.onload = function (e) {
+                        imagePreview.innerHTML = `<img src="${e.target.result}" alt="Uploaded Image">`;
+                    };
+                    
+                    reader.readAsDataURL(fileInput.files[0]);
+                }
+            });
+        </script>
+        
 </body>
 
 </html>
