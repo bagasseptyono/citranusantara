@@ -17,9 +17,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css">
     <!-- icon -->
     <script src="https://kit.fontawesome.com/73bcd336f4.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="dist/simple-lightbox.css?v2.14.0" />
     <link rel="stylesheet" href="style.css">
 
-    
+
 </head>
 
 <body>
@@ -62,9 +63,24 @@
             </form>
         </div>
     </header>
+    <main>
+        <div class="swipper mySwiper">
+            <div class="swiper-wrapper gallery">
+                <a href="img/header1.png" class="swiper-slide"><img src="img/header1.png" alt=""></a>
+                <a href="img/header2.png" class="swiper-slide"><img src="img/header2.png" alt=""></a>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </main>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script src="dist/simple-lightbox.js"></script>
     <script src="script.js"></script>
+    <script>
+        (function () {
+            var $gallery = new SimpleLightbox('.gallery a', {});
+        })();
+    </script>
 </body>
 
 </html>
