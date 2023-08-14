@@ -109,13 +109,77 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             });
         }
-    } 
-
-
-
-
+    }
 
 });
 
+// rating
+
+const allStars = document.querySelectorAll('.star');
+let current_star_level;
+allStars.forEach((star, i) => {
+    star.onclick = function () {
+        current_star_level = i + 1;
+
+        allStars.forEach((star, j) => {
+            if (current_star_level >= j + 1) {
+                star.style.color = "#FFE500";
+            } else {
+                star.style.color = "black";
+            }
+        });
+    }
+});
+const ratingInput = document.querySelector('input[name="rating"]');
+if (ratingInput) {
+    ratingInput.value = current_star_level;
+} 
 
 
+function previewGambar() {
+    var gambarInput = document.getElementById('image');
+    var gambarPreview = document.getElementById('gambarPreview');
+    var gambarNama = document.getElementById('gambarNama');
+    var icon = document.getElementById('addIcon');
+
+    var fileGambar = gambarInput.files[0];
+    var namaGambar = fileGambar.name;
+
+    var reader = new FileReader();
+    reader.onload = function(e) {
+        // icon.style.display = 'none';
+        gambarPreview.src = e.target.result;
+        gambarPreview.style.display = 'block';
+        // gambarNama.textContent = 'Nama Gambar: ' + namaGambar;
+    }
+    reader.readAsDataURL(fileGambar);
+}
+
+
+const gambarKomen = document.querySelectorAll('.gambar-komen');
+gambarKomen.forEach(img => {
+    if (!img.getAttribute('src')) {
+        img.style.display = 'none';
+    }
+});
+
+
+const replyItems = document.querySelectorAll('.opsi-balas');
+
+// Loop through the reply items and attach click event handlers
+replyItems.forEach(replyItem => {
+    replyItem.addEventListener('click', event => {
+        // Find the closest parent with the class "komen-parent"
+        const parentKomen = event.target.closest('.komen-parent');
+
+        // Find the corresponding "balas-komen" section within the parent
+        const balasKomenSection = parentKomen.querySelector('.balas-komen');
+
+        // Toggle the display of "balas-komen" section
+        if (balasKomenSection.style.display === 'none') {
+            balasKomenSection.style.display = 'flex';
+        } else {
+            balasKomenSection.style.display = 'none';
+        }
+    });
+});

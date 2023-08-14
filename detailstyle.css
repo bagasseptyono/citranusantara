@@ -1,4 +1,4 @@
-header .container{
+header .header{
  width: 100%;
  height: 100vh;
  /* max-height: 100vh; */
@@ -8,11 +8,11 @@ header .container{
 
 
 
-.container {
+.header {
     max-height: 100vh;
   }
   
-  header .container .gallery {
+  header .header .gallery {
     display: grid;
     grid-template-areas: "satu satu satu satu satu"
                     "dua tiga empat lima enam"                
