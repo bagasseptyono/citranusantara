@@ -11,7 +11,7 @@ var swiper = new Swiper(".mySwiper", {
 const nav = document.querySelector('nav');
 
 window.addEventListener('scroll', () => {
-    if (window.scrollY > 100) {
+    if (window.scrollY > 10) {
         nav.classList.add('scrolled');
     } else {
         nav.classList.remove('scrolled');

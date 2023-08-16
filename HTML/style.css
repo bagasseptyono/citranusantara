@@ -95,6 +95,7 @@ video {
 
 body {
     font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
 }
 
 h1 {
@@ -149,6 +150,34 @@ a:hover {
     justify-content: center;
     border-radius: 10px;
     background: #4B8673;
+}
+
+.a-link-big {
+    display: flex;
+    width: 100%;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: #4B8673;
+    margin-top: 8px;
+}
+
+.a-link-big-secondary{
+    display: flex;
+    width: 100%;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    background: #FFF;
+    color: #4B8673;
+    border-radius: 10px;
+    border: 1px solid #4B8673;
+    margin-top: 8px;
+}
+
+.fw-500{
+    font-weight: 500;
 }
 
 /* header */
@@ -320,6 +349,11 @@ nav .nav-list ul {
     background-color: #1A2F28;
 }
 
+.submit-form {
+    display: flex;
+    justify-content: center;
+}
+
 .search-form input,
 .select-form select,
 .submit-form button {
@@ -394,15 +428,15 @@ nav .nav-list ul {
     cursor: pointer;
 }
 
-.rating form{
+.rating form {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
+
 }
 
-.rating form .input{
+.rating form .input {
     font-size: medium;
     width: 80%;
     display: flex;
@@ -417,15 +451,16 @@ nav .nav-list ul {
 
 }
 
-.rating form .input label:hover{
+.rating form .input label:hover {
     cursor: pointer;
 }
 
 .rating form .input #komentar-input {
     border: none;
-    background:unset;
+    background: unset;
 }
-.rating form .input #komentar-input:focus{
+
+.rating form .input #komentar-input:focus {
     outline: none;
 }
 
@@ -441,7 +476,7 @@ nav .nav-list ul {
     display: none;
 }
 
-.rating form .input img{
+.rating form .input img {
     height: 24px;
 }
 
@@ -462,16 +497,18 @@ nav .nav-list ul {
     color: #FFE500;
 }
 
-.container-isi{
+.container-isi {
     margin-left: 60px;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     border-radius: 5px;
 }
+
 .container-isi p {
     font-weight: 400;
     font-size: smaller;
 }
-.container-isi .opsi-komen ul{
+
+.container-isi .opsi-komen ul {
     display: flex;
     list-style: none;
     gap: 10px;
@@ -480,19 +517,29 @@ nav .nav-list ul {
     font-weight: 500;
 }
 
-.komen-child{
+.opsi-balas:hover {
+    cursor: pointer;
+    transform: scale(1.03);
+}
+
+.opsi-lapor:hover {
+    cursor: pointer;
+    transform: scale(1.03);
+}
+
+.komen-child {
     margin-left: 60px;
 }
 
 /* balas komen */
-.balas-komen{
+.balas-komen {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.balas-komen form{
+.balas-komen form {
     font-size: medium;
     width: 100%;
     display: flex;
@@ -507,15 +554,16 @@ nav .nav-list ul {
 
 }
 
-.balas-komen form label:hover{
+.balas-komen form label:hover {
     cursor: pointer;
 }
 
 .balas-komen form #komentar-input {
     border: none;
-    background:unset;
+    background: unset;
 }
-.balas-komen form #komentar-input:focus{
+
+.balas-komen form #komentar-input:focus {
     outline: none;
 }
 
@@ -531,11 +579,96 @@ nav .nav-list ul {
     display: none;
 }
 
-.balas-komen form img{
+.balas-komen form img {
     height: 24px;
 }
 
-.balas-komen form i{
-    font-size:24px;
+.balas-komen form i {
+    font-size: 24px;
     color: black;
 }
+
+
+/* profile */
+.profile {
+    background-image: url("img/profile-background.png");
+    /* height: 100%; */
+
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: static;
+    display: flex;
+    justify-content: center;
+    flex: 1;
+    /* Take up the available space */
+    overflow-y: auto;
+}
+
+.container {
+    margin-top: 80px;
+    background-color: #FFF;
+    border-radius: 10px;
+
+}
+
+.sidebar {
+    top: 0;
+    position: sticky;
+    overflow-y: auto;
+}
+
+.content-profile {
+    max-height: calc(100vh - 8rem);
+    min-height: calc(100vh - 8rem);
+    overflow-y: auto;
+}
+
+.daftar-postingan .card {
+    width: 160px;
+    box-shadow: 4px 4px 15px 0px rgba(0, 0, 0, 0.20);
+}
+
+.daftar-postingan .card p {
+    font-size: small;
+}
+.card-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* report komentar */
+.daftar-reports{
+    border-radius: 5px;
+    box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.25);
+}
+
+table{
+    font-size: 12px;
+}
+th{
+    font-weight: 500;
+}
+tr,th{
+    border-bottom:1px solid #8E98A8; 
+    
+}
+
+table img{
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+}
+table a{
+    font-size: 12px;
+    margin-left: 4px;
+    transition: font-size 0.3s ease;
+}
+table a:hover{
+    font-size: 13px;
+}
+table td{
+    vertical-align: middle;
+}
+
