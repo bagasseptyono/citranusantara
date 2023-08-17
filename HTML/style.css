@@ -132,6 +132,14 @@ p {
     font-size: 16px;
 }
 
+.text-small {
+    font-size: small;
+}
+
+.text-grey {
+    color: #979797;
+}
+
 a {
     text-decoration: none;
     color: #fff;
@@ -163,7 +171,7 @@ a:hover {
     margin-top: 8px;
 }
 
-.a-link-big-secondary{
+.a-link-big-secondary {
     display: flex;
     width: 100%;
     height: 40px;
@@ -176,8 +184,24 @@ a:hover {
     margin-top: 8px;
 }
 
-.fw-500{
+.fw-500 {
     font-weight: 500;
+}
+
+.submit-style {
+    padding: 10px 20px;
+    border-radius: 10px;
+    background: #4B8673;
+    margin-top: 1rem;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: font-size 0.3s ease-in-out;
+}
+
+.submit-style:hover {
+    font-size: 18px;
 }
 
 /* header */
@@ -605,8 +629,12 @@ nav .nav-list ul {
     overflow-y: auto;
 }
 
-.container {
+.frame-profile {
     margin-top: 80px;
+}
+
+.container {
+    /* margin-top: 80px; */
     background-color: #FFF;
     border-radius: 10px;
 
@@ -632,43 +660,219 @@ nav .nav-list ul {
 .daftar-postingan .card p {
     font-size: small;
 }
-.card-body{
+
+.card-body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
 /* report komentar */
-.daftar-reports{
+.daftar-reports {
     border-radius: 5px;
     box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.25);
 }
 
-table{
+table {
     font-size: 12px;
 }
-th{
+
+th {
     font-weight: 500;
 }
-tr,th{
-    border-bottom:1px solid #8E98A8; 
-    
+
+tr,
+th {
+    border-bottom: 1px solid #8E98A8;
+
 }
 
-table img{
+table img {
     width: 50px;
     height: 50px;
     object-fit: cover;
 }
-table a{
+
+table a {
     font-size: 12px;
     margin-left: 4px;
     transition: font-size 0.3s ease;
 }
-table a:hover{
+
+table a:hover {
     font-size: 13px;
 }
-table td{
+
+table td {
     vertical-align: middle;
 }
 
+/* Login style */
+
+
+.login-image {
+    width: 100%;
+    height: 100vh;
+}
+
+
+.login-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.login-form input {
+    width: 60%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+}
+
+.login-form button {
+    padding: 10px 20px;
+    background-color: #007F6D;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 60%;
+}
+
+.login-google-button {
+    padding: 10px 0;
+    background-color: #007F6D;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-top: 10px;
+    display: flex;
+    width: 60%;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.login-google-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+
+.separator {
+    width: 60%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 10px 0;
+}
+
+.separator-line {
+    flex: 1;
+    border-top: 1px solid #ccc;
+}
+
+.separator-text {
+    margin: 0 10px;
+    color: #214924;
+    font-size: 14px;
+}
+
+.register-link {
+    margin-top: 10px;
+    text-decoration: none;
+    color: #007F6D
+}
+
+.tab-container {
+    display: flex;
+    width: 60%;
+}
+
+.tab {
+    flex: 1;
+    text-align: center;
+    padding: 20px;
+    cursor: pointer;
+    position: relative;
+    transition: color 0.3s ease-in-out;
+}
+
+.active-tab {
+    color: #007F6D;
+}
+
+.tab::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: #007F6D;
+    transform: translateX(-50%);
+    transition: width 0.3s ease-in-out;
+}
+
+.tab.active-tab::after {
+    width: 100%;
+}
+
+h1 {
+    text-align: center;
+    color: #007F6D;
+}
+
+
+/* PROFILE */
+.info-umum {
+    justify-content: start;
+    gap: 2rem;
+    align-items: center;
+}
+
+.info-umum .image-profile {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 100%;
+}
+
+.info-detail {
+    font-size: 13px;
+    border-radius: 5px;
+    background: #FFF;
+    box-shadow: 2px 2px 8px 0px rgba(0, 0, 0, 0.25);
+}
+
+.info-detail input.input-profile {
+    width: 100%;
+    padding: 4px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 16px;
+    transition: border-color 0.3s ease-in-out;
+    margin-bottom: 0.8rem;
+}
+
+.info-detail input.input-profile:focus {
+    outline: none;
+    border-color: #007F6D;
+    box-shadow: 0 0 5px rgba(0, 127, 109, 0.5);
+}
+
+.info-detail input.input-profile::placeholder {
+    margin-left: 10px;
+}
