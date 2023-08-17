@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
+    <!-- slider -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css">
+    <!-- icon -->
+    <script src="https://kit.fontawesome.com/73bcd336f4.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="dist/simple-lightbox.css?v2.14.0" />
+    <link rel="stylesheet" href="style.css">
+
+
+
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="nav-logo">
+                <h4>Citra Nusantara</h4>
+            </div>
+            <div class="nav-list">
+                <ul>
+                    <li><a href="">Rekomendasi</a></li>
+                    <li><a href="">Budaya</a></li>
+                    <li><a href="">Wisata</a></li>
+                    <li><a href="">Provinsi</a></li>
+                    <li><a href="">Masuk</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main class="profile">
+        <div class="container px-3 pt-5 frame-profile">
+            <div class="row">
+                <div class="col-md-3 d-flex border-end flex-column justify-content-between sidebar">
+                    <div class="ms-3">
+                        <a class="nav-link mb-2" aria-current="page" href="#">Profile</a>
+                        <a class="nav-link mb-2" href="#">Postingan</a>
+                    </div>
+                    <div class="logout text-center pb-5">
+                        <a class="nav-link" href="#">Keluar</a>
+                    </div>
+                </div>
+                <div class="col-md-9 px-3 ">
+                    <div class="baris d-flex justify-content-between">
+                        <h4>Profile Saya</h4>
+                        <a href="" class="a-link">Ubah</a>
+                    </div>
+                    <div class="container d-flex info-umum my-3">
+                        <img src="img/profileicon.jpg" alt="" class="image-profile">
+                        <div class="info d-flex flex-column">
+                            <h6>Satria Dewantara</h6>
+                            <p>@satriabajahitam</p>
+                            <p>Satriabajahitam@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="container mb-3">
+                        <p class="fw-500">Informasi Saya</p>
+                        <div class="info-detail p-4">
+                            <div>
+                                <p class="text-grey">Nama</p>
+                                <p class="fw-500">Satria Dewantara</p>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div>
+                                        <p class="text-grey">Username</p>
+                                        <p class="fw-500">@satriabajahitam</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div>
+                                        <p class="text-grey">No. Telp</p>
+                                        <p class="fw-500">08808880</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div>
+                                        <p class="text-grey">Email</p>
+                                        <p class="fw-500">satriabajahitam@gmail.com</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div>
+                                        <p class="text-grey">Tanggal Lahir</p>
+                                        <p class="fw-500">19 Januari 2002</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <p class="text-grey">Alamat</p>
+                                <p class="fw-500">satriabajahitam@gmail.com</p>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div>
+                                        <p class="text-grey">kabupaten/Kota</p>
+                                        <p class="fw-500">Surabya</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div>
+                                        <p class="text-grey">Provinsi</p>
+                                        <p class="fw-500">Jawa Timur</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script src="dist/simple-lightbox.js"></script>
+    <script src="script.js"></script>
+    <script>
+        (function () {
+            var $gallery = new SimpleLightbox('.gallery a', {});
+        })();
+    </script>
+</body>
+
+</html>
