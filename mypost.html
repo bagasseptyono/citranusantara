@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Citra Nusantara</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css">
+    <script src="https://kit.fontawesome.com/73bcd336f4.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+        }
+        
+        .container {
+            display: flex;
+            border: 1px solid #ccc;
+        }
+        
+        .left-section{
+            padding: 20px;
+            width: 30%;
+        } 
+        
+        .right-section {
+            padding: 20px;
+            width: 80%;
+        }
+        
+        .menu li {
+            margin-bottom: 10px;
+            list-style: none;
+        }
+        
+        .menu a {
+            text-decoration: none;
+            color: #333;
+        }
+        
+        .main-container {
+            display: flex;
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+        }
+        
+        .right-section .post {
+            border: 1px solid #ccc;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        
+        .post img {
+            width: 100px;
+            height: 100px;
+        }
+        
+        .post-content {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .post-actions {
+            display: flex;
+            align-items: center;
+        }
+        
+        .post-title {
+            margin-right: 10px;
+        }
+        
+        .edit-button,  .add-button {
+            background-color: #4B8673; /* Ganti dengan warna yang Anda inginkan */
+            color: white;
+            border-radius: 10px;
+            padding: 8px 19px;
+            cursor: pointer;
+            border-color: #fff;
+            transition: background-color 0.3s;
+            margin-top: 5px;;
+            
+        }
+        .delete-button{
+            background-color: #fff; /* Ganti dengan warna yang Anda inginkan */
+            color: #4B8673;
+            border-radius: 10px;
+            padding: 8px 19px;
+            cursor: pointer;
+            border-color: #4B8673;
+            transition: background-color 0.3s;
+            margin-top: 5px;;
+        }
+        .edit-button, .delete-button {
+            margin-left: auto;
+        }
+        
+        .add-button {
+            margin-right: 10px;
+        }
+        
+        .edit-button:hover, .delete-button:hover, .add-button:hover {
+            background-color: wheat;
+        }
+        
+        .separator {
+            width: 100%;
+            border: 1px solid #ccc;
+            margin: 10px 0;
+        }
+       
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="nav-logo">
+                <h4>Citra Nusantara</h4>
+            </div>
+            <div class="nav-list">
+                <ul>
+                    <li><a href="#">Rekomendasi</a></li>
+                    <li><a href="#">Budaya</a></li>
+                    <li><a href="#">Wisata</a></li>
+                    <li><a href="#">Provinsi</a></li>
+                    <li><a href="#">Masuk</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="header-slider">
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="img/header1.png" alt=""></div>
+                    <div class="swiper-slide"><img src="img/header2.png" alt=""></div>
+                    <div class="swiper-slide"><img src="img/header3.png" alt=""></div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </header>
+    <div class="main-container">
+        <div class="left-section">
+            <ul class="menu">
+                <li><a href="#">Daftar Postingan</a></li>
+                <li><a href="#">Report Postingan</a></li>
+                <li><a href="#">Report Komentar</a></li>
+                <li><a href="#">Keluar</a></li>
+            </ul>
+        </div>
+        <div class="right-section">
+            <h2>Posting</h2>
+            <div class="post">
+                <div class="post-content">
+                    <img src="img/header1.png" alt="Gambar">
+                    <div class="post-title">Judul Postingan 1</div>
+                    <div class="post-actions">
+                        <button class="edit-button">Edit</button>
+                        <button class="delete-button">Hapus</button>
+                    </div>
+                </div>
+                <hr class="separator">
+                <div class="post-content">
+                    <img src="img/header2.png" alt="Gambar">
+                    <div class="post-title">Judul Postingan 2</div>
+                    <div class="post-actions">
+                        <button class="edit-button">Edit</button>
+                        <button class="delete-button">Hapus</button>
+                    </div>
+                </div>
+                <!-- ... Tambahkan item lainnya di sini ... -->
+                <hr class="separator">
+                <div class="post-content">
+                    <img src="img/header3.png" alt="Gambar">
+                    <div class="post-title">Judul Postingan 3</div>
+                    <div class="post-actions">
+                        <button class="edit-button">Edit</button>
+                        <button class="delete-button">Hapus</button>
+                    </div>
+                </div>
+            </div>
+            <button class="add-button">Tambah</button>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
