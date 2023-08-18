@@ -135,6 +135,7 @@ if (ratingInput) {
     ratingInput.value = current_star_level;
 } 
 
+// preview komen
 
 function previewGambar() {
     var gambarInput = document.getElementById('image');
@@ -160,6 +161,24 @@ const gambarKomen = document.querySelectorAll('.gambar-komen');
 gambarKomen.forEach(img => {
     if (!img.getAttribute('src')) {
         img.style.display = 'none';
+    }
+});
+
+// preview post
+document.getElementById('imageUpload').addEventListener('change', function (event) {
+    const fileInput = event.target;
+    const imagePreview = document.getElementById('imagePreview');
+    const image = document.getElementById('image-input');
+    
+    if (fileInput.files && fileInput.files[0]) {
+        const reader = new FileReader();
+        
+        reader.onload = function (e) {
+            image.src = e.target.result;
+            // imagePreview.innerHTML = `<img src="${e.target.result}" alt="Uploaded Image">`;
+        };
+        
+        reader.readAsDataURL(fileInput.files[0]);
     }
 });
 
