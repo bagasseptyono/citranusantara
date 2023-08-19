@@ -637,10 +637,11 @@ nav .nav-list ul {
 
 .frame-profile {
     margin-top: 80px;
+    min-height: calc(100vh - 80px);
+    
 }
 
 .container {
-    /* margin-top: 80px; */
     background-color: #FFF;
     border-radius: 10px;
 
@@ -890,6 +891,7 @@ h1 {
     color: white;
     border-radius: 10px;
     overflow: hidden;
+    width: 100%;
 }
 
 .form-left label {
@@ -905,6 +907,7 @@ h1 {
 }
 .form-left .frame-input-post{
     padding: 10px;
+    width: 100%;
     border-radius: 5px;
     display: flex;
     justify-content: center;
@@ -914,12 +917,13 @@ h1 {
 .form-left .frame-input-post #imagePreview{
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     height: 100%;
     width: 100%;
     display: hidden;
 }
 .form-left .frame-input-post #imagePreview img{
-    max-height: 200px;
+    max-height: 100px;
     aspect-ratio: 1 / 1;
     object-fit: cover;
     display: hidden;
@@ -962,3 +966,8 @@ h1 {
 .form-left input[type="file"] {
     display: none;
 }  
+
+/* detele trix attach */
+trix-toolbar [data-trix-button-group="file-tools"]{
+    display: none;
+}

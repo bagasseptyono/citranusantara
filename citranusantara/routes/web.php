@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
+use Laravolt\Indonesia\Models\Province;
+use Laravolt\Indonesia\Models\City;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,3 +21,15 @@ Route::get('/', function () {
 });
 
 Route::resource('posts', PostController::class);
+
+
+
+Route::get('/get-provinces', function () {
+    $provinces = Province::pluck('name', 'code');
+    return response()->json($provinces);
+});
+
+Route::get('/get-cities/{province_code}', function ($province_id) {
+    $cities = City::where('province_code', $province_id)->pluck('name', 'code');
+    return response()->json($cities);
+});

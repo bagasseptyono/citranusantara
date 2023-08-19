@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <title>Document</title>
 
 
@@ -22,6 +24,7 @@
     {{-- Trix Editor --}}
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.0/dist/trix.css">
     <script type="text/javascript" src="https://unpkg.com/trix@2.0.0/dist/trix.umd.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 
     <link rel="stylesheet" href="{{ asset('css/dist/simple-lightbox.css?v2.14.0') }}" />
@@ -33,7 +36,7 @@
 </head>
 @yield('body')
 
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 <script src="{{ asset('css/dist/simple-lightbox.js') }}"></script>
 <script src="{{ asset('js/script.js') }}"></script>
