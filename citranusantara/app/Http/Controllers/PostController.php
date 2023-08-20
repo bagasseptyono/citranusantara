@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Image;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
@@ -48,7 +49,10 @@ class PostController extends Controller
     {
         //
         // dd($request->all());
-        $post = Post::create($request->post());
+        $userId = Auth::id();
+        $request_data = $request->post();
+        $request_data['user_id'] = $userId;
+        $post = Post::create($request_data);
 
         foreach ($request->file('imageUpload') as $image) {
             $imageName = uniqid() . '.' . $image->getClientOriginalExtension();

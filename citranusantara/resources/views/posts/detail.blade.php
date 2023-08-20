@@ -31,11 +31,6 @@
                 <div class="detail-post">
                     <div class="judul-post my-5 p-3">
                         <h1>{{ $post->judul }}</h1>
-                        <form action="{{ route('posts.destroy',$post->id) }}" method="post">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="submit-style">Hapus</button>
-                        </form>
                     </div>
                     <div class="row ">
                         <div class="col-md mb-3 lokasi ms-3"><i class="fa-solid fa-location-dot me-2"></i>

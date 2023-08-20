@@ -17,5 +17,7 @@ class Post extends Model
             'tarif',
             'kategori',
             'province',
-            'city'];
+            'city',
+            'user_id'
+        ];
 }
