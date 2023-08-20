@@ -15,7 +15,7 @@
             @auth
                 <li><a href="{{ route('posts.create') }}">Posting</a></li>
                 @if (Auth::user()->role == 'admin')
-                    <li><a href="">Admin Panel</a></li>
+                    <li><a href="{{ route('admin.index') }}">Admin Panel</a></li>
                 @else
                     <li><a href="{{ route('user-index') }}">Profile</a></li>
                 @endif

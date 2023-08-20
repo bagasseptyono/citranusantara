@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 use Laravolt\Indonesia\Models\Province;
@@ -28,6 +30,11 @@ Route::get('/user', [UserController::class,'index'])->name('user-index');
 Route::get('/user/edit', [UserController::class,'userEdit'])->name('user-edit');
 Route::post('/user/edit', [UserController::class,'userUpdate'])->name('user-update');
 Route::get('/user/mypost', [UserController::class,'userPost'])->name('user-mypost');
+Route::get('/admin', [AdminController::class,'userPost'])->name('admin.index');
+
+// comment
+Route::resource('comments', CommentController::class)->only(['store', 'update', 'destroy']);
+Route::post('reply',[CommentController::class,'replyStore'])->name('reply.store');
 
 
 Route::get('/get-provinces', function () {

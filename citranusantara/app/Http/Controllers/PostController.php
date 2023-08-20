@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use App\Models\Image;
 use App\Models\Post;
 use Illuminate\Http\Request;
@@ -79,7 +80,12 @@ class PostController extends Controller
         $image = Image::where('post_id', $id)->get();
         $province = Province::where('code', $post->province)->first();
         $city = City::where('code', $post->city)->first();
-        return view('posts.detail', ['post' => $post], compact('province', 'city', 'image'));
+        // $comments = Comment::where('post_id', $post->id)
+        // ->with('user') // Eager load the associated user
+        // ->orderBy('created_at')
+        // ->get();
+        $comments = Comment::with('replies', 'user')->where('post_id', $post->id)->get();
+        return view('posts.detail', ['post' => $post], compact('province', 'city', 'image','comments'));
     }
 
     /**

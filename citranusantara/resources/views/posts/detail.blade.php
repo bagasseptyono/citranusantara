@@ -54,7 +54,7 @@
                         <div class="col-md mb-3">
                             <div class="lokasi">
                                 <h2>Lokasi</h2>
-                                <p>{{ $post->tarif }}
+                                <p>{!! $post->lokasi !!}
                             </div>
                         </div>
                     </div>
@@ -64,7 +64,8 @@
                     <h2>Diskusi</h2>
                     <div class="container-fluid">
                         <div class="rating border-bottom">
-                            <form action="" class="py-3 px-2">
+                            <form action="{{ route('comments.store') }}" class="py-3 px-2" method="post" enctype="multipart/form-data">
+                                @csrf
                                 <p class="text-center mt-3">Beri Rating</p>
                                 <div class="stars text-center mt-2">
                                     <input type="hidden" name="rating" required>
@@ -75,31 +76,33 @@
                                     <i class="fa-solid fa-star star"></i>
                                 </div>
                                 <div class="input d-flex w-80 px-3 my-3">
-                                    <input type="text" name="komentar" id="komentar-input"
+                                    <input type="text" name="body" id="komentar-input"
                                         placeholder="Tulis Pengalamanmu" class="flex-grow-1">
                                     <img id="gambarPreview" src="#" alt="Preview Gambar" style="display: none;">
                                     <p id="gambarNama"></p>
                                     <label for="image" class="mx-3" id="addIcon"><i
                                             class="fa-solid fa-plus"></i></label>
-                                    <input type="file" name="image" id="image" onchange="previewGambar()"
+                                    <input type="file" name="image_comment" id="image" onchange="previewGambar()"
                                         accept="image/*">
+                                    <input type="hidden" name="post_id" value="{{ $post->id }}">
                                     <button type="submit"><i class="fa-solid fa-paper-plane"></i></button>
                                 </div>
                             </form>
                         </div>
 
                         <div class="komentar py-5 mx-3">
+                            @foreach($comments as $comment)
                             <div class="komen-parent">
                                 <div class="profile-icon d-flex">
-                                    <img src="{{ asset('img/profileicon.jpg') }}" alt="">
-                                    <h4>Bachtiar Riza Pratama</h4>
-                                    <p class="rating-review"><i class="fa-solid fa-star"></i> 4,6</p>
+                                    <img src="{{ $comment->user->image_profile ? asset('storage/image_profile/' . $comment->user->image_profile) : asset('img/profile.webp') }}" alt="">
+                                    <h4>{{ $comment->user->name }}</h4>
+                                    <p class="rating-review"><i class="fa-solid fa-star"></i> {{ $comment->rating }}</p>
                                 </div>
                                 <div class="container-isi p-3">
                                     <div class="d-flex">
                                         <div class="isi-komentar flex-grow-1">
-                                            <img src="" alt="" class="gambar-komen">
-                                            <p>Tempatnya jelek batyunya gak ngambang hoax</p>
+                                            <img src="{{ asset('storage/image_comment/' . $comment->image_comment) }}" alt="" class="gambar-komen">
+                                            <p>{{ $comment->body }}</p>
                                         </div>
                                         <div class="opsi-komen">
                                             <ul>
@@ -109,17 +112,18 @@
                                         </div>
                                     </div>
                                 </div>
+                                @foreach($comment->replies as $reply)
                                 <div class="komen-child my-2">
                                     <div class="profile-icon d-flex">
-                                        <img src="{{ asset('img/profileicon.jpg') }}" alt="">
-                                        <h4>Bachtiar Riza Pratama</h4>
-                                        <p class="rating-review"><i class="fa-solid fa-star"></i> 4,6</p>
+                                        <img src="{{ $reply->user->image_profile ? asset('storage/image_profile/' . $reply->user->image_profile) : asset('img/profile.webp') }}" alt="">
+                                        <h4>{{ $reply->user->name }}</h4>
+                                        {{-- <p class="rating-review"><i class="fa-solid fa-star"></i> 4,6</p> --}}
                                     </div>
                                     <div class="container-isi p-3">
                                         <div class="d-flex">
                                             <div class="isi-komentar flex-grow-1">
-                                                <img src="" alt="" class="gambar-komen">
-                                                <p>Tempatnya jelek batyunya gak ngambang hoax</p>
+                                                <img src="{{ asset('storage/image_reply/' . $reply->image_reply) }}" alt="" class="gambar-komen">
+                                                <p>{{ $reply->body }}</p>
                                             </div>
                                             <div class="opsi-komen">
                                                 <ul>
@@ -130,77 +134,26 @@
                                         </div>
                                     </div>
                                 </div>
+                                @endforeach
                                 <div class="balas-komen" style="display: none;">
-                                    <form action="" class="px-3 my-2 balas-form">
-                                        <input type="text" name="komentar" id="komentar-input" placeholder="Balas"
+                                    <form action="{{ route('reply.store') }}" class="px-3 my-2 balas-form" method="POST" enctype="multipart/form-data">
+                                        @csrf
+                                        <input type="hidden" name="comment_id" value="{{ $comment->id }}">
+                                        <input type="hidden" name="post_id" value="{{ $post->id }}">
+                                        <input type="text" name="body" id="komentar-input" placeholder="Balas"
                                             class="flex-grow-1">
                                         <img id="gambarPreview" src="#" alt="Preview Gambar"
                                             style="display: none;">
                                         <p id="gambarNama"></p>
                                         <label for="image" class="mx-3" id="addIcon"><i
                                                 class="fa-solid fa-plus"></i></label>
-                                        <input type="file" name="image" id="image" onchange="previewGambar()"
+                                        <input type="file" name="image_reply" id="image" onchange="previewGambar()"
                                             accept="image/*">
                                         <button type="submit"><i class="fa-solid fa-paper-plane"></i></button>
                                     </form>
                                 </div>
                             </div>
-                            <div class="komen-parent">
-                                <div class="profile-icon d-flex">
-                                    <img src="{{ asset('img/profileicon.jpg') }}" alt="">
-                                    <h4>Bachtiar Riza Pratama</h4>
-                                    <p class="rating-review"><i class="fa-solid fa-star"></i> 4,6</p>
-                                </div>
-                                <div class="container-isi p-3">
-                                    <div class="d-flex">
-                                        <div class="isi-komentar flex-grow-1">
-                                            <img src="" alt="" class="gambar-komen">
-                                            <p>Tempatnya jelek batyunya gak ngambang hoax</p>
-                                        </div>
-                                        <div class="opsi-komen">
-                                            <ul>
-                                                <li class="opsi-balas">Reply</li>
-                                                <li class="opsi-lapor">Laporkan</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="komen-child my-2">
-                                    <div class="profile-icon d-flex">
-                                        <img src="{{ asset('img/profileicon.jpg') }}" alt="">
-                                        <h4>Bachtiar Riza Pratama</h4>
-                                        <p class="rating-review"><i class="fa-solid fa-star"></i> 4,6</p>
-                                    </div>
-                                    <div class="container-isi p-3">
-                                        <div class="d-flex">
-                                            <div class="isi-komentar flex-grow-1">
-                                                <img src="" alt="" class="gambar-komen">
-                                                <p>Tempatnya jelek batyunya gak ngambang hoax</p>
-                                            </div>
-                                            <div class="opsi-komen">
-                                                <ul>
-                                                    <li class="opsi-balas">Reply</li>
-                                                    <li class="opsi-lapor">Laporkan</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="balas-komen" style="display: none;">
-                                    <form action="" class="px-3 my-2 balas-form">
-                                        <input type="text" name="komentar" id="komentar-input" placeholder="Balas"
-                                            class="flex-grow-1">
-                                        <img id="gambarPreview" src="#" alt="Preview Gambar"
-                                            style="display: none;">
-                                        <p id="gambarNama"></p>
-                                        <label for="image" class="mx-3" id="addIcon"><i
-                                                class="fa-solid fa-plus"></i></label>
-                                        <input type="file" name="image" id="image" onchange="previewGambar()"
-                                            accept="image/*">
-                                        <button type="submit"><i class="fa-solid fa-paper-plane"></i></button>
-                                    </form>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>

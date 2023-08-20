@@ -164,6 +164,7 @@ document.addEventListener("DOMContentLoaded", function () {
 // rating
 
 const allStars = document.querySelectorAll('.star');
+const ratingInput = document.querySelector('input[name="rating"]');
 let current_star_level;
 allStars.forEach((star, i) => {
     star.onclick = function () {
@@ -176,12 +177,11 @@ allStars.forEach((star, i) => {
                 star.style.color = "black";
             }
         });
+        ratingInput.value = current_star_level;
+        // console.log(ratingInput.value);
     }
 });
-const ratingInput = document.querySelector('input[name="rating"]');
-if (ratingInput) {
-    ratingInput.value = current_star_level;
-}
+
 
 // preview komen
 
@@ -204,13 +204,31 @@ function previewGambar() {
     reader.readAsDataURL(fileGambar);
 }
 
+document.addEventListener('DOMContentLoaded', function() {
+    var replyImages = document.querySelectorAll('.gambar-komen');
 
-const gambarKomen = document.querySelectorAll('.gambar-komen');
-gambarKomen.forEach(img => {
-    if (!img.getAttribute('src')) {
-        img.style.display = 'none';
-    }
+    replyImages.forEach(function(image) {
+        image.addEventListener('load', function() {
+            // Image loaded successfully
+        });
+
+        image.addEventListener('error', function() {
+            // Image failed to load, hide it
+            this.style.display = 'none';
+        });
+    });
 });
+// const gambarKomen = document.querySelectorAll('.gambar-komen');
+// $(document).ready(function() {
+//     $('.gambar-komen').on('error', function() {
+//         $(this).hide();
+//     });
+// });
+// gambarKomen.forEach(img => {
+//     if (!img.getAttribute('src') || image.getAttribute('src')==NULL) {
+//         img.style.display = 'none';
+//     }
+// });
 
 
 // preview post

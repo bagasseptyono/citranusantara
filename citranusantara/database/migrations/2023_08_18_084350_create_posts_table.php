@@ -15,7 +15,7 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->string('judul');
             $table->string('deskripsi');
-            $table->string('lokasi');
+            $table->text('lokasi');
             $table->string('tarif');
             $table->string('kategori');
             $table->string('province');
