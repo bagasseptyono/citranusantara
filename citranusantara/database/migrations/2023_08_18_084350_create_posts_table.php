@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('province');
             $table->string('city');
             $table->foreignId('user_id')->constrained('users');
+            $table->decimal('rating', 3, 1)->nullable();
             $table->timestamps();
         });
     }

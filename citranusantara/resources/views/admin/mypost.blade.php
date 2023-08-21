@@ -24,24 +24,25 @@
                             <a href="{{ route('posts.create') }}" class="a-link">Tambah</a>
                         </div>
                         <div class="search my-4 w-100">
-                            <form class="row w-100" role="search">
+                            <form class="row w-100" role="search" method="get" action="{{ route('search') }}">
+                                <input type="hidden" name="admin" value="admin">
                                 <div class="search-form col-md-5 mb-2">
-                                    <input class="form-control me-2 flex-grow-1" type="search" placeholder="Search"
-                                        aria-label="Search">
+                                    <input class="form-control me-2 flex-grow-1" type="text" placeholder="Search"
+                                        aria-label="Search" name="search">
                                 </div>
                                 <div class="select-form col-md d-flex mb-2">
-                                    <select class="form-select" aria-label="Default select example" id="kategori" required
+                                    <select class="form-select" aria-label="Default select example" id="kategori" 
                                         name="kategori">
                                         <option>Kategori</option>
                                         <option value="Wisata">Wisata</option>
                                         <option value="Budaya">Budaya</option>
                                     </select>
                                     <select class="form-select" aria-label="Default select example" id="provinsi"
-                                        name="province" required>
+                                        name="province" >
                                         <option>Provinsi</option>
                                     </select>
                                     <select class="form-select" aria-label="Default select example" id="cities"
-                                        name="city" required>
+                                        name="city" >
                                         <option>Kabupaten/Kota</option>
                                     </select>
                                 </div>
@@ -58,7 +59,7 @@
                                         alt="...">
                                     <div class="card-body">
                                         <div class="card-info">
-                                            <h6>{{ $post->judul }}</h6>
+                                            <h6><a href="{{ route('posts.show', $post->id) }}" class="text-dark">{{ $post->judul }}</a></h6>
                                             <p>{{ $post->city_name }}, {{ $post->province_name }}</p>
                                         </div>
                                         <div class="link">

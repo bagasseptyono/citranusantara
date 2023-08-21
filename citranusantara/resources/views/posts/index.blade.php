@@ -22,7 +22,8 @@
                 <div class="subtagline">
                     <h1 class="text-white">Temukan Wisata dan Budaya Nusantara</h1>
                 </div>
-                <form action="" method="get">
+                <form action="{{ route("search") }}" method="get">
+                    @csrf
                     <input type="text" name="search" id="search" placeholder="Cari">
                     <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </form>
@@ -31,15 +32,16 @@
         <main>
             <div class="container">
                 <div class="search my-4 w-100">
-                    <form class="row w-100" role="search">
+                    <form class="row w-100" role="search" method="GET" action="{{ route('search') }}">
+                        @csrf
                         <div class="search-form col-md-3 mb-2 p-0">
-                            <input class="form-control me-2 flex-grow-1" type="search" placeholder="Search"
-                                aria-label="Search">
+                            <input class="form-control me-2 flex-grow-1" type="text" placeholder="Search"
+                                        aria-label="Search" name="search">
                         </div>
                         <div class="select-form col-md  mb-2">
                             <div class="row">
                                 <div class="col-sm p-0">
-                                    <select class="form-select" aria-label="Default select example" id="kategori" required
+                                    <select class="form-select" aria-label="Default select example" id="kategori" 
                                         name="kategori">
                                         <option>Kategori</option>
                                         <option value="Wisata">Wisata</option>
@@ -49,14 +51,14 @@
                                 <div class="col-sm p-0">
                                     <div id="myProvince" style="display: none;"></div>
                                     <select class="form-select" aria-label="Default select example" id="provinsi"
-                                        name="province" required>
+                                        name="province" >
                                         <option>Provinsi</option>
                                     </select>
                                 </div>
                                 <div class="col-sm p-0">
                                     <div id="myCity" style="display: none;"></div>
                                     <select class="form-select" aria-label="Default select example" id="cities"
-                                        name="city" required>
+                                        name="city" >
                                         <option>Kabupaten/Kota</option>
                                     </select>
                                 </div>
@@ -75,7 +77,16 @@
                                 <img src="{{ asset('storage/images/' . $post->image_name) }}" class="card-img-top"
                                     alt="...">
                                 <div class="card-body">
-                                    <h5 class="card-title">{{ $post->judul }}</h5>
+                                    <div class="d-flex align-items-center justify-content-between mb-2">
+                                    <h5 class="card-title"><a href="{{ route('posts.show', $post->id) }}" class="text-dark">{{ $post->judul }}</a>
+                                    </h5>
+                                    @if($post->rating)
+                                        <p class="rating-review"><i class="fa-solid fa-star text-warning"></i>
+                                            {{ $post->rating }}
+                                        </p>
+                                        @endif
+                                    </div>
+                                    <p class="card-text fw-500">{{ $post->kategori }}</p>
                                     <p class="card-text mb-3">{{ $post->city_name }}, {{ $post->province_name }}</p>
                                     <a href="{{ route('posts.show',$post->id) }}" class="a-link my-2 mx-auto text-center">Explore</a>
                                 </div>

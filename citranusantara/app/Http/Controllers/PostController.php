@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Comment;
 use App\Models\Image;
 use App\Models\Post;
+use App\Models\PostReport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Laravolt\Indonesia\Models\City;
@@ -20,7 +22,18 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = DB::table('posts')->get();
+        // $posts = DB::table('posts')->get();
+
+        // $posts = Post::with(['image', 'province', 'city'])
+        // ->orderByDesc('rating')
+        // ->get();
+        // foreach($posts as $post){
+        //     dd($post->province);
+        // }
+
+        $posts = DB::table('posts')
+            ->orderByDesc('rating')
+            ->get();
         foreach ($posts as $post) {
             $image = Image::where('post_id', $post->id)->first();
             $post->image_name = $image ? $image->name : null;
@@ -29,6 +42,7 @@ class PostController extends Controller
             $city = City::where('code', $post->city)->first();
             $post->city_name = $city->name;
         }
+
         // $images = DB::table('images')->get();
         return view('posts.index', compact('posts'));
     }
@@ -85,7 +99,7 @@ class PostController extends Controller
         // ->orderBy('created_at')
         // ->get();
         $comments = Comment::with('replies', 'user')->where('post_id', $post->id)->get();
-        return view('posts.detail', ['post' => $post], compact('province', 'city', 'image','comments'));
+        return view('posts.detail', ['post' => $post], compact('province', 'city', 'image', 'comments'));
     }
 
     /**
@@ -93,7 +107,12 @@ class PostController extends Controller
      */
     public function edit(string $id)
     {
+        
+        
         $post = Post::find($id);
+        if (Gate::denies('edit',$post)) {
+            abort(403);
+        }
         $image = Image::where('post_id', $id)->get();
         $province = Province::where('code', $post->province)->first();
         $city = City::where('code', $post->city)->first();
@@ -116,7 +135,8 @@ class PostController extends Controller
         $post->province = $request->province;
         $post->city = $request->city;
         $post->save();
-        return redirect()->route('posts.show', $id);
+        // return redirect()->route('posts.show', $id);
+        return back()->with('success', 'Reply posted successfully');
     }
 
     /**
@@ -140,6 +160,24 @@ class PostController extends Controller
         $post = Post::find($id)->delete();
         $delete;
         $post;
-        return redirect()->route('posts.index');
+        return back()->with('success', 'Reply posted successfully');
+    }
+
+    public function reportPost(Request $request, $postId)
+    {
+        $user = Auth::user();
+
+        $this->validate($request, [
+            'reason' => 'required',
+        ]);
+
+        $post = Post::findOrFail($postId);
+        $report = new PostReport();
+        $report->user_id = $user->id;
+        $report->post_id = $post->id;
+        $report->reason = $request->input('reason');
+        $report->save();
+
+        return redirect()->back()->with('success', 'Post reported successfully.');
     }
 }

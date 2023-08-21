@@ -216,7 +216,9 @@ header {
 }
 
 /* navbar */
-
+header.background-navbar{
+    background-color: rgba(0, 0, 0, 0.5);
+}
 nav {
     display: flex;
     width: 100%;
@@ -373,6 +375,11 @@ nav .nav-list ul {
 
 .rekomendasi .daftarRekomendasi .card p {
     font-size: small;
+}
+
+.card img{
+    aspect-ratio: 4 / 2;
+    object-fit: cover;
 }
 
 .rekomendasi .more {

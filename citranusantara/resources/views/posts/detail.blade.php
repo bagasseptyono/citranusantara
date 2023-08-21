@@ -16,8 +16,9 @@
                     <div class="header-slider">
                         <div class="swiper mySwiper">
                             <div class="swiper-wrapper">
-                                @foreach($image as $gambar)
-                                <div class="swiper-slide"><img src="{{ asset('storage/images/' . $gambar->name) }}" alt=""></div>
+                                @foreach ($image as $gambar)
+                                    <div class="swiper-slide"><img src="{{ asset('storage/images/' . $gambar->name) }}"
+                                            alt=""></div>
                                 @endforeach
                             </div>
                             <div class="swiper-pagination"></div>
@@ -64,7 +65,8 @@
                     <h2>Diskusi</h2>
                     <div class="container-fluid">
                         <div class="rating border-bottom">
-                            <form action="{{ route('comments.store') }}" class="py-3 px-2" method="post" enctype="multipart/form-data">
+                            <form action="{{ route('comments.store') }}" class="py-3 px-2" method="post"
+                                enctype="multipart/form-data">
                                 @csrf
                                 <p class="text-center mt-3">Beri Rating</p>
                                 <div class="stars text-center mt-2">
@@ -91,39 +93,23 @@
                         </div>
 
                         <div class="komentar py-5 mx-3">
-                            @foreach($comments as $comment)
-                            <div class="komen-parent">
-                                <div class="profile-icon d-flex">
-                                    <img src="{{ $comment->user->image_profile ? asset('storage/image_profile/' . $comment->user->image_profile) : asset('img/profile.webp') }}" alt="">
-                                    <h4>{{ $comment->user->name }}</h4>
-                                    <p class="rating-review"><i class="fa-solid fa-star"></i> {{ $comment->rating }}</p>
-                                </div>
-                                <div class="container-isi p-3">
-                                    <div class="d-flex">
-                                        <div class="isi-komentar flex-grow-1">
-                                            <img src="{{ asset('storage/image_comment/' . $comment->image_comment) }}" alt="" class="gambar-komen">
-                                            <p>{{ $comment->body }}</p>
-                                        </div>
-                                        <div class="opsi-komen">
-                                            <ul>
-                                                <li class="opsi-balas">Reply</li>
-                                                <li class="opsi-lapor">Laporkan</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                @foreach($comment->replies as $reply)
-                                <div class="komen-child my-2">
+                            @foreach ($comments as $comment)
+                                <div class="komen-parent">
                                     <div class="profile-icon d-flex">
-                                        <img src="{{ $reply->user->image_profile ? asset('storage/image_profile/' . $reply->user->image_profile) : asset('img/profile.webp') }}" alt="">
-                                        <h4>{{ $reply->user->name }}</h4>
-                                        {{-- <p class="rating-review"><i class="fa-solid fa-star"></i> 4,6</p> --}}
+                                        <img src="{{ $comment->user->image_profile ? asset('storage/image_profile/' . $comment->user->image_profile) : asset('img/profile.webp') }}"
+                                            alt="">
+                                        <h4>{{ $comment->user->name }}</h4>
+                                        <p class="rating-review"><i class="fa-solid fa-star"></i> {{ $comment->rating }}
+                                        </p>
                                     </div>
                                     <div class="container-isi p-3">
                                         <div class="d-flex">
                                             <div class="isi-komentar flex-grow-1">
-                                                <img src="{{ asset('storage/image_reply/' . $reply->image_reply) }}" alt="" class="gambar-komen">
-                                                <p>{{ $reply->body }}</p>
+                                                @if ($comment->image_comment)
+                                                    <img src="{{ asset('storage/image_comment/' . $comment->image_comment) }}"
+                                                        alt="" class="gambar-komen">
+                                                @endif
+                                                <p>{{ $comment->body }}</p>
                                             </div>
                                             <div class="opsi-komen">
                                                 <ul>
@@ -133,26 +119,52 @@
                                             </div>
                                         </div>
                                     </div>
+                                    @foreach ($comment->replies as $reply)
+                                        <div class="komen-child my-2">
+                                            <div class="profile-icon d-flex">
+                                                <img src="{{ $reply->user->image_profile ? asset('storage/image_profile/' . $reply->user->image_profile) : asset('img/profile.webp') }}"
+                                                    alt="">
+                                                <h4>{{ $reply->user->name }}</h4>
+                                                {{-- <p class="rating-review"><i class="fa-solid fa-star"></i> 4,6</p> --}}
+                                            </div>
+                                            <div class="container-isi p-3">
+                                                <div class="d-flex">
+                                                    <div class="isi-komentar flex-grow-1">
+                                                        @if($reply->image_reply)
+                                                            <img src="{{ asset('storage/image_reply/' . $reply->image_reply) }}"
+                                                            alt="" class="gambar-komen">
+                                                        @endif
+                                                        <p>{{ $reply->body }}</p>
+                                                    </div>
+                                                    <div class="opsi-komen">
+                                                        <ul>
+                                                            <li class="opsi-balas">Reply</li>
+                                                            <li class="opsi-lapor">Laporkan</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                    <div class="balas-komen" style="display: none;">
+                                        <form action="{{ route('reply.store') }}" class="px-3 my-2 balas-form"
+                                            method="POST" enctype="multipart/form-data">
+                                            @csrf
+                                            <input type="hidden" name="comment_id" value="{{ $comment->id }}">
+                                            <input type="hidden" name="post_id" value="{{ $post->id }}">
+                                            <input type="text" name="body" id="komentar-input" placeholder="Balas"
+                                                class="flex-grow-1">
+                                            <img id="gambarPreview" src="#" alt="Preview Gambar"
+                                                style="display: none;">
+                                            <p id="gambarNama"></p>
+                                            <label for="image" class="mx-3" id="addIcon"><i
+                                                    class="fa-solid fa-plus"></i></label>
+                                            <input type="file" name="image_reply" id="image"
+                                                onchange="previewGambar()" accept="image/*">
+                                            <button type="submit"><i class="fa-solid fa-paper-plane"></i></button>
+                                        </form>
+                                    </div>
                                 </div>
-                                @endforeach
-                                <div class="balas-komen" style="display: none;">
-                                    <form action="{{ route('reply.store') }}" class="px-3 my-2 balas-form" method="POST" enctype="multipart/form-data">
-                                        @csrf
-                                        <input type="hidden" name="comment_id" value="{{ $comment->id }}">
-                                        <input type="hidden" name="post_id" value="{{ $post->id }}">
-                                        <input type="text" name="body" id="komentar-input" placeholder="Balas"
-                                            class="flex-grow-1">
-                                        <img id="gambarPreview" src="#" alt="Preview Gambar"
-                                            style="display: none;">
-                                        <p id="gambarNama"></p>
-                                        <label for="image" class="mx-3" id="addIcon"><i
-                                                class="fa-solid fa-plus"></i></label>
-                                        <input type="file" name="image_reply" id="image" onchange="previewGambar()"
-                                            accept="image/*">
-                                        <button type="submit"><i class="fa-solid fa-paper-plane"></i></button>
-                                    </form>
-                                </div>
-                            </div>
                             @endforeach
                         </div>
                     </div>
@@ -160,5 +172,6 @@
 
 
             </div>
+
         </main>
     @endsection

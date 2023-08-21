@@ -36,6 +36,15 @@
 </head>
 @yield('body')
 
+
+<footer class="bg-light text-center text-lg-start position-absolute  w-100 ">
+    <!-- Copyright -->
+    <div class="text-white text-center p-3" style="background-color: rgba(0, 0, 0, 0.9);">
+        © 2023 Copyright 
+        <a class="text-white" style="text-decoration: none;" href="https://citranusantara.my.id/">WER</a>
+    </div>
+    <!-- Copyright -->
+</footer>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 <script src="{{ asset('css/dist/simple-lightbox.js') }}"></script>

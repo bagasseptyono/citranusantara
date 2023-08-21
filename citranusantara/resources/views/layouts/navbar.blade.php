@@ -1,6 +1,6 @@
 <nav>
     <div class="nav-logo">
-        <h4>Citra Nusantara</h4>
+        <h4><a href="{{ route(('home')) }}">Citra Nusantara</a></h4>
     </div>
     <div class="nav-list">
         <ul>

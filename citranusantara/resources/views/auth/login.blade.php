@@ -2,6 +2,9 @@
 @section('body')
 
     <body class="login">
+        <header style="background-navbar">
+            @include('layouts.navbar')
+        </header>
         <div class="vh-100 row">
             <div class="login-image col-md d-none d-md-block">
                 <img src="img/daftar.png" alt="">
@@ -19,7 +22,7 @@
                     <input type="password" placeholder="Password"  name="password" required>
                     <button>Masuk</button>
                 </form>
-                <div class="separator">
+                {{-- <div class="separator">
                     <div class="separator-line"></div>
                     <span class="separator-text">Atau</span>
                     <div class="separator-line"></div>
@@ -27,7 +30,7 @@
                 <button class="login-google-button">
                     <img class="login-google-icon" src="img/icon_gg.png" alt="Google Icon">
                     Masuk Menggunakan Google
-                </button>
+                </button> --}}
 
                 <p>Belum memiliki akun? <a class="register-link" href="{{ route('register') }}">Daftar</a></p>
             </div>

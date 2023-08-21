@@ -49,7 +49,7 @@
                                 <div class="col">
                                     <label for="kategori">Kategori</label>
                                     <select class="form-select" aria-label="Default select example" id="kategori" required name="kategori">
-                                        <option>Kategori</option>
+                                        <option></option>
                                         <option value="Wisata">Wisata</option>
                                         <option value="Budaya">Budaya</option>
                                     </select>
