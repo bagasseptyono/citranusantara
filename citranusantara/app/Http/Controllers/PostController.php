@@ -138,7 +138,7 @@ class PostController extends Controller
         $post->city = $request->city;
         $post->save();
         // return redirect()->route('posts.show', $id);
-        return back()->with('success', 'Reply posted successfully');
+        return redirect()->route('posts.show',$id);
     }
 
     /**

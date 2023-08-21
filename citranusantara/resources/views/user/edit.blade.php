@@ -40,7 +40,7 @@
                                         <div class="col-md-6">
                                             <div>
                                                 <p class="text-grey">Username</p>
-                                                <p class="fw-500">@satriabajahitam</p>
+                                                <p class="fw-500"><span>@</span>{{ $post->username }}</p>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
@@ -55,7 +55,7 @@
                                         <div class="col-md-6">
                                             <div>
                                                 <p class="text-grey">Email</p>
-                                                <p class="fw-500">satriabajahitam@gmail.com</p>
+                                                <p class="fw-500">{{ $info->email }}</p>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
