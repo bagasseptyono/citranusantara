@@ -42,7 +42,7 @@
                     <div class="daftarRekomendasi d-flex flex-wrap my-3 justify-content-between">
                         @foreach ($posts as $post)
                             <div class="card my-3">
-                                <img src="{{ asset('storage/images/' . $post->image_name) }}" class="card-img-top"
+                                <img src="{{ asset('storage/image_post/' . $post->image_name) }}" class="card-img-top"
                                     alt="...">
                                 <div class="card-body">
                                     <div class="d-flex align-items-center justify-content-between mb-2">

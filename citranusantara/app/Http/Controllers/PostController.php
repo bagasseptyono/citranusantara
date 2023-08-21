@@ -73,7 +73,9 @@ class PostController extends Controller
             $imageName = uniqid() . '.' . $image->getClientOriginalExtension();
 
             // Store the image in the storage directory
-            $image->storeAs('public/images', $imageName);
+            // $image->storeAs('public/images', $imageName);
+            
+                $image->storeAs('image_post', $imageName, 'public');
 
             // Create a new Image record in the database and associate it with the post
             Image::create([

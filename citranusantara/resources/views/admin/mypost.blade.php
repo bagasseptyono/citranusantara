@@ -11,8 +11,8 @@
                     <div class="col-md-3 d-flex border-end flex-column justify-content-between sidebar">
                         <div class="ms-3">
                             <a class="nav-link mb-2" aria-current="page" href="{{ route('user-index') }}">Daftar Postingan</a>
-                            <a class="nav-link mb-2" href="">Laporan</a>
-                            <a class="nav-link mb-2" href="">Konfirmasi</a>
+                            {{-- <a class="nav-link mb-2" href="">Laporan</a>
+                            <a class="nav-link mb-2" href="">Konfirmasi</a> --}}
                         </div>
                         <div class="logout text-center pb-5">
                             <a class="nav-link" href="{{ route('logout') }}">Keluar</a>
@@ -55,7 +55,7 @@
                         <div class="daftar-postingan d-flex flex-wrap my-3 justify-content-center">
                             @foreach ($posts as $post)
                                 <div class="card my-3">
-                                    <img src="{{ asset('storage/images/' . $post->image_name) }}" class="card-img-top"
+                                    <img src="{{ asset('storage/image_post/' . $post->image_name) }}" class="card-img-top"
                                         alt="...">
                                     <div class="card-body">
                                         <div class="card-info">

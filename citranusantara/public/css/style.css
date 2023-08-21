@@ -862,6 +862,9 @@ h1 {
 
 
 /* PROFILE */
+.image-reply{
+    display: none;
+}
 .info-umum {
     justify-content: start;
     gap: 2rem;

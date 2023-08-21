@@ -16,7 +16,7 @@ class CommentReply extends Model
         'post_id',
         'comment_id',
         'body',
-        'image_comment',
+        'image_reply',
     ];
 
     public function comment()

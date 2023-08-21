@@ -8,8 +8,8 @@
                 @if (count($image) >= 6)
                     <div class="gallery">
                         @foreach ($image as $gambar)
-                            <a href="{{ asset('storage/images/' . $gambar->name) }}" class=""><img
-                                    src="{{ asset('storage/images/' . $gambar->name) }}" alt="" title="" /></a>
+                            <a href="{{ asset('storage/image_post/' . $gambar->name) }}" class=""><img
+                                    src="{{ asset('storage/image_post/' . $gambar->name) }}" alt="" title="" /></a>
                         @endforeach
                     </div>
                 @elseif(count($image) < 6)
@@ -17,7 +17,7 @@
                         <div class="swiper mySwiper">
                             <div class="swiper-wrapper">
                                 @foreach ($image as $gambar)
-                                    <div class="swiper-slide"><img src="{{ asset('storage/images/' . $gambar->name) }}"
+                                    <div class="swiper-slide"><img src="{{ asset('storage/image_post/' . $gambar->name) }}"
                                             alt=""></div>
                                 @endforeach
                             </div>
@@ -77,7 +77,7 @@
                                     <i class="fa-solid fa-star star"></i>
                                     <i class="fa-solid fa-star star"></i>
                                 </div>
-                                <div class="input d-flex w-80 px-3 my-3">
+                                <div class="input d-flex w-100 px-3 my-3">
                                     <input type="text" name="body" id="komentar-input"
                                         placeholder="Tulis Pengalamanmu" class="flex-grow-1">
                                     <img id="gambarPreview" src="#" alt="Preview Gambar" style="display: none;">
@@ -114,7 +114,7 @@
                                             <div class="opsi-komen">
                                                 <ul>
                                                     <li class="opsi-balas">Reply</li>
-                                                    <li class="opsi-lapor">Laporkan</li>
+                                                    {{-- <li class="opsi-lapor">Laporkan</li> --}}
                                                 </ul>
                                             </div>
                                         </div>
@@ -139,7 +139,7 @@
                                                     <div class="opsi-komen">
                                                         <ul>
                                                             <li class="opsi-balas">Reply</li>
-                                                            <li class="opsi-lapor">Laporkan</li>
+                                                            {{-- <li class="opsi-lapor">Laporkan</li> --}}
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -154,13 +154,13 @@
                                             <input type="hidden" name="post_id" value="{{ $post->id }}">
                                             <input type="text" name="body" id="komentar-input" placeholder="Balas"
                                                 class="flex-grow-1">
-                                            <img id="gambarPreview" src="#" alt="Preview Gambar"
+                                            <img id="gambarPreview-reply" src="#" alt="Preview Gambar"
                                                 style="display: none;">
                                             <p id="gambarNama"></p>
-                                            <label for="image" class="mx-3" id="addIcon"><i
+                                            <label for="image-reply" class="mx-3" id="addIcon-reply addIcon"><i
                                                     class="fa-solid fa-plus"></i></label>
-                                            <input type="file" name="image_reply" id="image"
-                                                onchange="previewGambar()" accept="image/*">
+                                            <input type="file" name="image_reply" id="image-reply"
+                                                onchange="previewGambarReply()" accept="image/*" style="display:none;">
                                             <button type="submit"><i class="fa-solid fa-paper-plane"></i></button>
                                         </form>
                                     </div>

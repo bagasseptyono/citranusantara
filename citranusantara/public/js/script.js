@@ -186,10 +186,30 @@ allStars.forEach((star, i) => {
 // preview komen
 
 function previewGambar() {
+    
     var gambarInput = document.getElementById('image');
     var gambarPreview = document.getElementById('gambarPreview');
     var gambarNama = document.getElementById('gambarNama');
     var icon = document.getElementById('addIcon');
+
+    var fileGambar = gambarInput.files[0];
+    var namaGambar = fileGambar.name;
+
+    var reader = new FileReader();
+    reader.onload = function (e) {
+        // icon.style.display = 'none';
+        gambarPreview.src = e.target.result;
+        gambarPreview.style.display = 'block';
+        // gambarNama.textContent = 'Nama Gambar: ' + namaGambar;
+    }
+    reader.readAsDataURL(fileGambar);
+}
+function previewGambarReply() {
+    
+    var gambarInput = document.getElementById('image-reply');
+    var gambarPreview = document.getElementById('gambarPreview-reply');
+    var gambarNama = document.getElementById('gambarNama');
+    var icon = document.getElementById('addIcon-reply');
 
     var fileGambar = gambarInput.files[0];
     var namaGambar = fileGambar.name;

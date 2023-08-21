@@ -30,7 +30,7 @@
                             <p class="text-grey">Masukkan deskripsi singkat tentang wisata atau budaya yang ada di tempat
                                 tersebut</p>
 
-                            <input id="x" type="hidden" name="deskripsi">
+                            <input id="x" type="hidden" name="deskripsi" required>
                             <trix-editor input="x"></trix-editor>
 
                             <label for="lokasi">Lokasi</label>

@@ -83,7 +83,7 @@ class UserController extends Controller
             }
             $imageName = uniqid() . '.' . $request->file('image_profile')->getClientOriginalExtension();
             $imagePath = $request->file('image_profile')->storeAs('image_profile', $imageName, 'public');
-            $user->image_profile = $imageName;
+            $user->image_profile = $imageName; 
         }
 
         $user->save();

@@ -1,11 +1,11 @@
-<nav>
-    <div class="nav-logo">
+<nav class="d-flex ">
+    <div class="nav-logo d-none d-sm-block">
         <h4><a href="{{ route(('home')) }}">Citra Nusantara</a></h4>
     </div>
     <div class="nav-list">
         <ul>
+            <li><a href="{{ route('home') }}">Home</a></li>
             <li><a href="{{ route('posts.index') }}">Rekomendasi</a></li>
-            
             @guest
                 <li>
                     <a href="{{ route('login') }}">Masuk</a>
